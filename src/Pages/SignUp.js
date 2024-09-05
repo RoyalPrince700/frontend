@@ -4,15 +4,18 @@ import { FaEyeSlash } from "react-icons/fa";
 import {Link} from "react-router-dom"
 import loginIcons from '../assest/signin.gif'
 import imageTobase64 from '../routes/imageTobase64';
+import SummaryApi from '../common';
 
 
 const SignUp = () => {
 
     const [showPassword,setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    //inside data all the information of email, password etc asre
+    //are stored
     const [data, setData] = useState({
       email : "",
-      passwod : "",
+      password : "",
       name: "",
       confirmPassword : "",
       profilePic : ""
@@ -41,11 +44,27 @@ const SignUp = () => {
               })
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async(e) =>{
       e.preventDefault()
+      //lets make sure the password and confirm password are the same
+
+      if(data.password === data.confirmPassword){
+        const dataResponse = await fetch(SummaryApi.signUp.url,{
+          method : SummaryApi.signUp.method,
+          headers : {
+            "content-type" : "application/json"
+          },
+          body : JSON.stringify(data)
+        })
+          const dataApi = await dataResponse.json()
+
+          console.log("data", dataApi)
+      } else {
+        console.log("Please check password and confirm password")
+      }
     }
 
-    console.log("data login",data)
+
 
   return (
     <section id='signup'>
@@ -82,6 +101,7 @@ const SignUp = () => {
                   name='name'
                   value={data.name}
                   onChange={handleChange}
+                  required
                   className='w-full h-full outline-none bg-transparent'/>
             </div>
         
@@ -96,6 +116,7 @@ const SignUp = () => {
                   name='email'
                   value={data.email}
                   onChange={handleChange}
+                  required
                   className='w-full h-full outline-none bg-transparent'/>
             </div>
         
@@ -110,6 +131,7 @@ const SignUp = () => {
                value={data.password}
                onChange={handleChange}
                placeholder='enter password'
+               required
                 className='w-full h-full outline-none bg-transparent'/>
                 <div className='cursor-pointer text-xl'
                 onClick={()=>setShowPassword((preve)=>!preve)}>
@@ -139,6 +161,7 @@ const SignUp = () => {
                name='confirmPassword'
                value={data.confirmPassword}
                onChange={handleChange}
+               required
                placeholder='enter confirm password'
                 className='w-full h-full outline-none bg-transparent'/>
                 <div className='cursor-pointer text-xl'
