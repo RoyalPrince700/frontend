@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from './Logo'
 import { GrSearch } from "react-icons/gr";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -12,6 +12,8 @@ import { setUserDetails } from '../store/userSlice';
 const Header = () => {
   const user = useSelector(state => state?.user?.user)
   const dispatch = useDispatch()
+
+  const [menuDisplay,setMenuDisplay] = useState(false)
 
   console.log("user header", user)
 
@@ -32,11 +34,11 @@ const Header = () => {
   }
   return (
    <header className='h-16 shadow-md bg-white'>
-    <div className='container mx-auto flex items-center px-4 
+    <div className='container mx-auto flex items-center py-4 
     justify-between'>
       <div className='cursor-pointer'>
        <Link to={"/"}>
-       <Logo w={90} h={60}/>
+       <Logo w="90px" h="20px" />
        </Link>
        
        
@@ -56,7 +58,9 @@ const Header = () => {
 
       <div className='flex items-center gap-7'>
 
-        <div className='text-3xl cursor-pointer'>
+       <div className='relative flex justify-center'>
+       <div className='text-3xl cursor-pointer flex justify-center'
+       onClick={()=>setMenuDisplay(preve => !preve)}>
           {
             user?.profilePic ? (
               <img src={user?.profilePic} 
@@ -66,9 +70,22 @@ const Header = () => {
               <FaRegCircleUser/>
             )
           }
-
-          
         </div>
+
+          {
+            menuDisplay && (
+
+            <div className='absolute bg-white bottom-0 
+              top-11 h-fit p-2 shadow-lg rounded'>
+              <nav>
+                <Link to={"admin-panel"} 
+                className='whitespace-nowrap hover:bg-slate-100 p-2'>Admin Panel</Link>
+              </nav>
+            </div>
+            )
+          }
+       
+       </div>
         <div className='text-2xl flex relative'>
 
           <span> <FaShoppingCart/></span>

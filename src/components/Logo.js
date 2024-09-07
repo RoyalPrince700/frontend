@@ -1,4 +1,183 @@
-import React from 'react'
+import React from 'react';
+import lifcart from '../assest/lifcartnew.png'; // Navigates from components to assets
+
+
+
+const Logo = ({ w, h }) => {
+  return (
+    <img
+      src={lifcart}
+      alt="Logo"
+      style={{ width: w, height: h }}
+    />
+  );
+}
+
+export default Logo;
+
+
+
+/*import React from "react";
+
+const Logo = ({ w, h }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={w}
+      height={h}
+      viewBox="0 0 395.52 87.61"
+    >
+      <g>
+        <path
+          d="M20.95 0H4.2v-34.85h6.35V-5.5h10.4V0zM32.7 0h-6.4v-34.85h6.4V0zm14.65 0h-6.4v-34.85h18.2v5.5h-11.8v9.15h10.3v5.6h-10.3V0zm28.59.6q-2.72 0-5.25-1.11-2.52-1.12-4.53-3.38-2.02-2.26-3.19-5.76-1.18-3.5-1.18-8.25 0-5.7 1.99-9.61 1.99-3.92 5.33-5.93 3.33-2.01 7.38-2.01 2.75 0 4.49.52 1.74.53 2.78 1.25 1.03.73 1.68 1.33l-2.8 5.25q-1.07-1.18-2.22-1.89-1.15-.71-3.68-.71-2.55 0-4.33 1.47-1.79 1.48-2.73 4.07-.94 2.58-.94 5.91 0 6.52 2.19 9.84 2.19 3.31 5.26 3.31 2.38 0 4.05-.68 1.68-.67 2.5-1.52l2.75 4.95q-.7.57-1.86 1.26Q82.47-.4 80.61.1q-1.87.5-4.67.5zm16.5-.6h-7l14.75-35.45h.5L115.49 0h-6.8l-1.95-5.05H94.29L92.44 0zm7.95-22.2l-.8 2.8-3.5 9.5h8.8l-3.65-9.5-.85-2.8zm32.5 10.1l9 12.1h-7.75l-8.95-12.6V0h-6.35v-34.85h9.7q3.55 0 6.35 1.04t4.42 3.46q1.63 2.42 1.63 6.6 0 2.27-.76 4.69-.77 2.41-2.53 4.31-1.76 1.9-4.76 2.65zm-7.7-17.75v14.1h2.65q2.2 0 3.69-1.04 1.48-1.03 2.25-2.72.76-1.69.76-3.64 0-3.38-1.55-5.04-1.55-1.66-5.3-1.66h-2.5zM158.89 0h-6.45v-29.2h-8.05v-5.65h22.55v5.65h-8.05V0z"
+          fill="#000"
+        />
+        {/* Add other SVG paths or elements if needed }
+      </g>
+    </svg>
+  );
+}
+
+export default Logo;*/
+
+
+
+/*import React from "react";
+
+const Logo = ({w,h}) => {
+    return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsSvgjs="http://svgjs.dev/svgjs"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width={w}
+      height={h}
+      viewBox="0 0 2000 449"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        width="2000"
+        height="449"
+        data-background-color="#ffffff"
+        transform="translate(-1.212 -1.314)"
+        viewBox="0 0 396 89"
+      >
+        <svg
+          width="395.52"
+          height="88.255"
+          transform="translate(.24 .26)"
+          viewBox="0 0 395.52 88.255"
+        >
+          <svg width="395.52" height="88.255" viewBox="0 0 542.613 121.077">
+            <svg
+              width="395.52"
+              height="87.61"
+              transform="translate(0 16.733)"
+              viewBox="0 0 395.52 87.61"
+            >
+              <g>
+                <svg width="395.52" height="87.61" viewBox="0 0 395.52 87.61">
+                  <svg width="395.52" height="87.61" viewBox="0 0 395.52 87.61">
+                    <svg
+                      width="395.52"
+                      height="87.61"
+                      data-palette-color="#000000"
+                      viewBox="4.2 -35.45 162.74 36.05"
+                    >
+                      <path
+                        d="M20.95 0H4.2v-34.85h6.35V-5.5h10.4V0zM32.7 0h-6.4v-34.85h6.4V0zm14.65 0h-6.4v-34.85h18.2v5.5h-11.8v9.15h10.3v5.6h-10.3V0zm28.59.6q-2.72 0-5.25-1.11-2.52-1.12-4.53-3.38-2.02-2.26-3.19-5.76-1.18-3.5-1.18-8.25 0-5.7 1.99-9.61 1.99-3.92 5.33-5.93 3.33-2.01 7.38-2.01 2.75 0 4.49.52 1.74.53 2.78 1.25 1.03.73 1.68 1.33l-2.8 5.25q-1.07-1.18-2.22-1.89-1.15-.71-3.68-.71-2.55 0-4.33 1.47-1.79 1.48-2.73 4.07-.94 2.58-.94 5.91 0 6.52 2.19 9.84 2.19 3.31 5.26 3.31 2.38 0 4.05-.68 1.68-.67 2.5-1.52l2.75 4.95q-.7.57-1.86 1.26Q82.47-.4 80.61.1q-1.87.5-4.67.5zm16.5-.6h-7l14.75-35.45h.5L115.49 0h-6.8l-1.95-5.05H94.29L92.44 0zm7.95-22.2l-.8 2.8-3.5 9.5h8.8l-3.65-9.5-.85-2.8zm32.5 10.1l9 12.1h-7.75l-8.95-12.6V0h-6.35v-34.85h9.7q3.55 0 6.35 1.04t4.42 3.46q1.63 2.42 1.63 6.6 0 2.27-.76 4.69-.77 2.41-2.53 4.31-1.76 1.9-4.76 2.65zm-7.7-17.75v14.1h2.65q2.2 0 3.69-1.04 1.48-1.03 2.25-2.72.76-1.69.76-3.64 0-3.38-1.55-5.04-1.55-1.66-5.3-1.66h-2.5zM158.89 0h-6.45v-29.2h-8.05v-5.65h22.55v5.65h-8.05V0z"
+                        data-fill-palette-color="primary"
+                        className="0"
+                      ></path>
+                    </svg>
+                  </svg>
+                </svg>
+              </g>
+            </svg>
+            <svg
+              width="126.411"
+              height="121.077"
+              transform="translate(416.203)"
+              viewBox="0 0 126.411 121.077"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="126.411"
+                height="121.077"
+                x="0"
+                y="0"
+                className="icon-icon-0"
+                data-fill-palette-color="accent"
+                version="1.1"
+                viewBox="0.572 1.603 48.855 46.794"
+                xmlSpace="preserve"
+              >
+                <g data-fill-palette-color="accent">
+                  <g data-fill-palette-color="accent">
+                    <g data-fill-palette-color="accent">
+                      <path
+                        d="M42.187 30.881L16.181 39.004"
+                        data-fill-palette-color="accent"
+                      ></path>
+                      <path
+                        d="M41.73 29.426L15.726 37.543 16.637 40.461 42.643 32.338z"
+                        data-fill-palette-color="accent"
+                      ></path>
+                    </g>
+                    <path
+                      d="M18.572 42.535a2.23 2.23 0 01-.513 1.664 2.25 2.25 0 01-1.539.814 2.277 2.277 0 01-1.969-3.723 2.25 2.25 0 011.542-.813 2.24 2.24 0 011.666.514c.47.388.756.935.813 1.544m-2.764-5.101a5.32 5.32 0 00-3.609 1.91 5.3 5.3 0 00-1.201 3.9 5.34 5.34 0 005.807 4.811 5.28 5.28 0 003.605-1.908 5.28 5.28 0 001.204-3.898 5.3 5.3 0 00-1.907-3.607 5.3 5.3 0 00-3.899-1.208"
+                      data-fill-palette-color="accent"
+                    ></path>
+                    <g data-fill-palette-color="accent">
+                      <path
+                        d="M13.436 30.992L39.554 39.439"
+                        data-fill-palette-color="accent"
+                      ></path>
+                      <path
+                        d="M12.773 33.689H40.219V36.744H12.773z"
+                        data-fill-palette-color="accent"
+                        transform="scale(-1) rotate(17.928 223.276 -167.98)"
+                      ></path>
+                    </g>
+                    <path
+                      d="M32.707 42.547a5.3 5.3 0 001.186 3.902 5.3 5.3 0 003.599 1.922 5.337 5.337 0 005.828-4.781 5.343 5.343 0 00-4.786-5.83 5.3 5.3 0 00-3.903 1.188 5.28 5.28 0 00-1.924 3.599m5.529-1.752a2.287 2.287 0 012.044 2.494 2.29 2.29 0 01-2.491 2.049 2.3 2.3 0 01-1.538-.824 2.27 2.27 0 01-.505-1.674 2.27 2.27 0 01.822-1.537 2.27 2.27 0 011.668-.508"
+                      data-fill-palette-color="accent"
+                    ></path>
+                    <path
+                      d="M11.115 19.867L5.497 2.681 5.155 1.64 4.058 1.63 0.6 1.603 0.572 4.656 4.033 4.685 2.594 3.63 8.214 20.812z"
+                      data-fill-palette-color="accent"
+                    ></path>
+                    <g data-fill-palette-color="accent">
+                      <path
+                        d="M17.158 26.744L37.898 26.744 40.767 19.382 15.07 19.474z"
+                        data-fill-palette-color="accent"
+                      ></path>
+                      <path
+                        d="M5.756 13.544L12.45 32.75l29.955-.223 7.022-18.983zm34.609 15.282l-.379.973H14.86l-.318-1.104-2.963-10.315-.558-1.939 2.021-.008 29.954-.109 2.243-.01-.815 2.088z"
+                        data-fill-palette-color="accent"
+                      ></path>
+                    </g>
+                  </g>
+                  <path
+                    fillRule="evenodd"
+                    d="M32.577 11.763h3.868L32.577 8.57l-3.866-3.191-3.864 3.191-3.865 3.193z"
+                    clipRule="evenodd"
+                    data-fill-palette-color="accent"
+                  ></path>
+                </g>
+              </svg>
+            </svg>
+          </svg>
+        </svg>
+      </svg>
+    </svg>
+  );
+}
+
+export default Logo;*/
+
+/*import React from 'react'
 
 const Logo = ({w,h}) => {
   return (
@@ -29,4 +208,4 @@ const Logo = ({w,h}) => {
   )
 }
 
-export default Logo
+export default Logo*/
