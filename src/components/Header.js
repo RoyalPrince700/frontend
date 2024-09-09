@@ -15,7 +15,7 @@ const Header = () => {
 
   const [menuDisplay,setMenuDisplay] = useState(false)
 
-  console.log("user header", user)
+
 
 
   const handleLogout = async()=>{
@@ -40,10 +40,7 @@ const Header = () => {
        <Link to={"/"}>
        <Logo w="90px" h="20px" />
        </Link>
-       
-       
-        
-        
+
        
       </div>
       <div className='hidden lg:flex items-center w-full justify-between
@@ -79,7 +76,7 @@ const Header = () => {
               top-11 h-fit p-2 shadow-lg rounded'>
               <nav>
                 <Link to={"admin-panel"} 
-                className='whitespace-nowrap hover:bg-slate-100 p-2'>Admin Panel</Link>
+                className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Admin Panel</Link>
               </nav>
             </div>
             )
