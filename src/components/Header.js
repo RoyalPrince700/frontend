@@ -57,7 +57,10 @@ const Header = () => {
       <div className='flex items-center gap-7'>
 
        <div className='relative flex justify-center'>
-       <div className='text-3xl cursor-pointer flex justify-center'
+
+        {
+          user?._id && (
+            <div className='text-3xl cursor-pointer flex justify-center'
        onClick={()=>setMenuDisplay(preve => !preve)}>
           {
             user?.profilePic ? (
@@ -69,6 +72,9 @@ const Header = () => {
             )
           }
         </div>
+          )
+        }
+       
 
           {
             menuDisplay && (
