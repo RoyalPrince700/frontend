@@ -84,7 +84,7 @@ const Header = () => {
               <nav>
                 {
                   user?.role === ROLE.ADMIN && (
-                    <Link to={"admin-panel"} 
+                    <Link to={"/admin-panel/all-products"} 
                     className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Admin Panel</Link>
                 
                   )
