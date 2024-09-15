@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import fetchCategoryWiseProduct from '../helpers/fetchCategoryWiseProduct'
 import displayNARCurrency from '../helpers/displayCurrency'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
+import addToCart from '../helpers/addToCart'
 
 const HorizontalCardProduct = ({category, heading}) => {
 
@@ -84,7 +86,7 @@ const HorizontalCardProduct = ({category, heading}) => {
         ) : (
             data.map((product, index)=>{
                 return (  
-            <div className='w-full min-w-[280px] md:min-w-[320px] h-36
+            <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] h-36
             max-w-[280px] md:max-w-[320px]
                 bg-white rounded-sm shadow flex'>
                 
@@ -106,10 +108,10 @@ const HorizontalCardProduct = ({category, heading}) => {
                         <p className='text-slate-500 line-through'>{displayNARCurrency(product?.price) }</p>
                     </div>
                     <button className='bg-red-600 text-sm text-white
-                    hover:bg-red-700 p-2 py-0.5 px-3 rounded-full
-                    '>Add to Cart</button>
+                    hover:bg-red-700 p-2 py-0.5 px-3 rounded-full'
+                    onClick={(e)=>addToCart(e,product?._id)}>Add to Cart</button>
                     </div>
-                </div>
+                </Link>
                 )
             })
         )
