@@ -1,15 +1,26 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import fetchCategoryWiseProduct from '../helpers/fetchCategoryWiseProduct'
 import displayNARCurrency from '../helpers/displayCurrency'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import addToCart from '../helpers/addToCart'
+import Context from '../context'
 
 const CategoryWiseProductDisplay = ({category, heading}) => {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const loadingList = new Array(13).fill(null)
+
+    const { fetchUserAddToCart } = useContext(Context);
+
+    const handleAddToCart = async(e,id)=>{
+   await addToCart(e,id)
+      fetchUserAddToCart()
+    }
+
+
+
 
 
     const fetchData = async() => {
@@ -101,7 +112,7 @@ const CategoryWiseProductDisplay = ({category, heading}) => {
                     </div>
                     <button className='bg-red-600 text-sm text-white
                     hover:bg-red-700 p-2 py-0.5 px-3 rounded-full
-                    'onClick={(e)=>addToCart(e,product?._id)}>Add to Cart</button>
+                    'onClick={(e)=>handleAddToCart(e,product?._id)}>Add to Cart</button>
                     </div>
                 </Link>
                 )
