@@ -35,7 +35,7 @@ const router = createBrowserRouter ([
                     element: <SignUp/>
                 },
                 { //the /:categoryName is to direct each link to a category page of each category
-                    path: "product-category/:categoryName",
+                    path: "product-category",
                     element: <CategoryProduct/>
                 },
                 {path : "product/:id",

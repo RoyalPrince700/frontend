@@ -42,7 +42,7 @@ return (
                 return(
                     //+product?.category is to take the link to each category page
                     //mix-blend-multiply css takes away the image background
-                    <Link to={"/product-category/"+product?.category} 
+                    <Link to={"/product-category?category="+product?.category} 
                     className='cursor-pointer' key={product?.category}>
                         <div className='md:w-20 md:h-20 rounded-full
                         w-16 h-16 
