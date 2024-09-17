@@ -30,7 +30,7 @@ const ProductDetails = () => {
   const [zoomImage, setZoomImage] = useState(false)
 
 
-  console.log("productss id", params)
+  console.log("productss id", params) //call params inside useEffect so it will update automatically
 
   const fetchProductDetails = async()=>{
     setLoading(true)
@@ -57,7 +57,7 @@ const ProductDetails = () => {
 
   useEffect(()=>{
     fetchProductDetails()
-  },[])
+  },[params]) //call params to update the product 
 
   const handleMouseEnterProduct = (imageURL)=>{
     setActiveImage(imageURL)
