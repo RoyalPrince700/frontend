@@ -14,7 +14,7 @@ const Cart = () => {
   
 
     const fetchData = async() =>{
-        setLoading(true)
+       
         const response = await fetch(SummaryApi.addToCartProductView.url,{
             method : SummaryApi.addToCartProductView.method,
             credentials : 'include',
@@ -24,7 +24,7 @@ const Cart = () => {
             
         })
 
-        setLoading(false)
+      
         const responseData = await response.json()
         
 
@@ -33,54 +33,15 @@ const Cart = () => {
         }
     }
 
+    const handleLoading = async() =>{
+       await fetchData()
+    }
     useEffect(()=>{
-        fetchData()
+            setLoading(true)
+            handleLoading()
+            setLoading(false)
+
     },[])
-
-    /*const increaseQty = async(id,qty) =>{
-        const response = await fetch(SummaryApi.updateCartProduct.url,{
-            method : SummaryApi.updateCartProduct.method,
-            credentials : 'include',
-            headers : {
-                "content-type" : "application/json"
-            },
-            body : JSON.stringify({
-                        quantity :  qty + 1
-                    })
-            
-        })
-        const responseData = await response.json()
-
-        
-
-        if(responseData.success){
-            fetchData()
-        }
- }
-
-        const increaseQty = async(id, qty) => {
-            console.log("Current quantity:", qty);  // Log the current quantity for debugging
-            const newQty = qty + 1;
-            console.log("Updated quantity:", newQty);  // Log the updated quantity for debugging
-        
-            const response = await fetch(SummaryApi.updateCartProduct.url, {
-                method: SummaryApi.updateCartProduct.method,
-                credentials: 'include',
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    quantity: newQty  // Send the updated quantity to the server
-                })
-            });
-        
-            const responseData = await response.json();
-            console.log("Server Response:", responseData);  // Log the server's response for debugging
-        
-            if (responseData.success) {
-                fetchData();  // Fetch the updated cart data after a successful update
-            }
-        };*/
 
         const increaseQty = async (id, qty) => {
            
@@ -127,29 +88,6 @@ const Cart = () => {
            } 
            
         }
-
-        /*const deleteCartProduct = async (id) =>{
-            const response = await fetch(SummaryApi.deleteCartProduct.url, {
-                method: SummaryApi.deleteCartProduct.method,
-
-                credentials: 'include',
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    _id: id,  // Send the product's _id
-                    
-                })
-            });
-        
-            const responseData = await response.json();
-        
-            if (responseData.success) {
-                fetchData();  // Fetch updated cart data after the successful update
-                context.fetchUserAddToCart()
-            }
-           } */
-
             const deleteCartProduct = async (id) => {
                 try {
                   const response = await fetch(SummaryApi.deleteCartProduct.url, {
@@ -201,9 +139,9 @@ const Cart = () => {
         <div className='w-full max-w-3xl'>
             {
                 loading ? (
-                    loadingCart.map(el => {
+                    loadingCart.map((el,index) => {
                                return(
-                                 <div key={el+"Add To Cart Loading"} 
+                                 <div key={el+"Add To Cart Loading"+index} 
                                  className='w-full bg-slate-200 h-32 border
                             border-slate-300 my-2 animate-pulse rounded'>
 
