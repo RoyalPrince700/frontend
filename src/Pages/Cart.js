@@ -3,6 +3,7 @@ import SummaryApi from '../common'
 import Context from '../context'
 import displayNARCurrency from '../helpers/displayCurrency'
 import {MdDelete} from "react-icons/md"
+import {loadStripe} from '@stripe/stripe-js';
 
 
 const Cart = () => {
@@ -124,6 +125,31 @@ const Cart = () => {
         (preve,curr)=>preve + (curr.quantity * 
             curr?.productId?.sellingPrice) , 0)
 
+            const handlePayment = async ()=>{
+
+                
+               
+        const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
+                const response = await fetch(SummaryApi.payment.url,{
+                    method : SummaryApi.payment.method,
+                    credentials : 'include',
+                    headers : {
+                        'content-type' : 'application/json'
+                    },
+                    body : JSON.stringify({
+                        cartItems : data
+                    })
+                })
+                const responseData = await response.json()
+
+                if(responseData?.id){
+                    stripePromise.redirectToCheckout({ sessionId : responseData.id})
+                }
+                
+
+            }
+
   return (
     <div className='container mx-auto'>
        <div className='text-center text-lg my-3'>
@@ -203,33 +229,39 @@ const Cart = () => {
         </div>
 
             {/**summary */}
-         <div className='mt-5 lg:mt-0 w-full max-w-sm'>
-         {
-                loading ? (
-                <div className='h-36 bg-slate-200 border border-slate-300
-                 animate-pulse'>
-                                
-                            </div>
-                ) : (
-        <div className='h-36 bg-white'>
-        <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
-        <div className='flex items-center justify-between 
-        px-4 font-medium text-lg text-slate-600  gap-2'>
-            <p>Quantity</p>
-            <p>{totalQty}</p> 
-            </div>
-
-            <div className='flex 
-            font-medium text-lg text-slate-600 items-center justify-between px-4  gap-2'>
-                <p>Total Price</p>
-                <p>{displayNARCurrency(totalPrice)}</p>
-            </div>
-            <button className='bg-blue-600 p-2 text-white
-            w-full'>Payment</button>
-        </div>
-    )
-}
-         </div>
+            {
+                data[0] && (
+                    <div className='mt-5 lg:mt-0 w-full max-w-sm'>
+                    {
+                           loading ? (
+                           <div className='h-36 bg-slate-200 border border-slate-300
+                            animate-pulse'>
+                                           
+                                       </div>
+                           ) : (
+                   <div className='h-36 bg-white'>
+                   <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
+                   <div className='flex items-center justify-between 
+                   px-4 font-medium text-lg text-slate-600  gap-2'>
+                       <p>Quantity</p>
+                       <p>{totalQty}</p> 
+                       </div>
+           
+                       <div className='flex 
+                       font-medium text-lg text-slate-600 items-center justify-between px-4  gap-2'>
+                           <p>Total Price</p>
+                           <p>{displayNARCurrency(totalPrice)}</p>
+                       </div>
+                       <button className='bg-blue-600 p-2 text-white
+                       w-full'
+                       onClick={handlePayment}>Payment</button>
+                   </div>
+               )
+           }
+                    </div>
+                )
+            }
+       
           
 
 
