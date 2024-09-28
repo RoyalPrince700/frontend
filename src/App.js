@@ -3,72 +3,91 @@ import './App.css';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
 import SummaryApi from './common';
 import Context from './context';
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { setUserDetails } from './store/userSlice';
+import ScrollToTop from './components/ScrollTop';
+
+
 
 function App() {
-  const dispatch = useDispatch()
-  const [cartProductCount, setCartProductCount] = useState(0)
+  const dispatch = useDispatch();
+  const [cartProductCount, setCartProductCount] = useState(0);
+  const [likedProductCount, setLikedProductCount] = useState(0);
 
-  const fetchUserDetails = async()=>{
-    const dataResponse = await fetch(SummaryApi.current_user.url,{
-      method : SummaryApi.current_user.method,
-      credentials : 'include'
-    })
+  const fetchUserDetails = async () => {
+    const dataResponse = await fetch(SummaryApi.current_user.url, {
+      method: SummaryApi.current_user.method,
+      credentials: 'include',
+    });
 
-    const dataApi = await dataResponse.json()
+    const dataApi = await dataResponse.json();
 
-    if (dataApi.success){
-      dispatch(setUserDetails(dataApi.data))
+    if (dataApi.success) {
+      dispatch(setUserDetails(dataApi.data));
     }
+  };
 
-  }
+  const fetchUserAddToCart = async () => {
+    const dataResponse = await fetch(SummaryApi.addToCartProductCount.url, {
+      method: SummaryApi.addToCartProductCount.method,
+      credentials: 'include',
+    });
 
-  const fetchUserAddToCart = async()=>{
-    const dataResponse = await fetch(SummaryApi.addToCartProductCount.url,{
-      method : SummaryApi.addToCartProductCount.method,
-      credentials : 'include'
-    })
+    const dataApi = await dataResponse.json();
 
-    const dataApi = await dataResponse.json()
+    setCartProductCount(dataApi?.data?.count);
+  };
 
-  setCartProductCount(dataApi?.data?.count)
-}
+  const fetchUserLikedProduct = async () => {
+    const dataResponse = await fetch(SummaryApi.likedProductCount.url, {
+      method: SummaryApi.likedProductCount.method,
+      credentials: 'include',
+    });
 
+    const dataApi = await dataResponse.json();
 
-  useEffect(()=>{
-    /**user Details */
-    fetchUserDetails()
+    setLikedProductCount(dataApi?.data?.count);
+  };
 
-      /**user Cart Product */
-    fetchUserAddToCart()
+  useEffect(() => {
+    // Fetch user details
+    fetchUserDetails();
 
-  }, [])
+    // Fetch user cart product count
+    fetchUserAddToCart();
+
+    // Fetch user liked product count
+    fetchUserLikedProduct();
+  }, []);
+
   return (
-  <>
+    <>
+      {/* Provide the ScrollToTop component here */}
+      <ScrollToTop /> {/* This ensures the page scrolls to the top on route change */}
 
-<Context.Provider value = {{
-    fetchUserDetails, // user details fetch
-    cartProductCount, //current user add to cart product count
-    fetchUserAddToCart
-  }}>
-    <ToastContainer 
-    position='top-center'
-    />
+      <Context.Provider
+        value={{
+          fetchUserDetails, // User details fetch
+          cartProductCount, // Current user add-to-cart product count
+          fetchUserAddToCart,
+          likedProductCount,
+          fetchUserLikedProduct,
+        }}
+      >
+        <ToastContainer position="top-center" />
 
-      <Header/>
-      <main className='min-h-[calc(100vh-120px)] pt-16'>
-        <Outlet/>
-      </main>
-      <Footer/>
-
+        <Header />
+        <main className="min-h-[calc(100vh-120px)] pt-16">
+          <Outlet />
+        </main>
+        <Footer />
       </Context.Provider>
-  </>
+    </>
   );
 }
 

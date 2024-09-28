@@ -99,7 +99,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container mt-16 lg:mt-0 mx-auto p-4'>
 
       <div className=' min-h-[200px] flex flex-col lg:flex-row gap-4'>
         {/**product image */}
@@ -215,12 +215,12 @@ const ProductDetails = () => {
             ) : 
             (
               <div className='flex flex-col gap-1'>
-              <p className='bg-red-200 text-red-600
+              <p className='bg-yellow-200 text-yellow-600
               px-2 rounded-full inline-block w-fit'>{data?.brandName}</p>
               <h2 className='text-2xl lg:text-4xl font-medium'>{data?.productName}</h2>
               <p className='capitalize text-slate-400'>{data?.category}</p>
 
-              <div className='text-red-600 flex items-center gap-1'>
+              <div className='text-yellow-600 flex items-center gap-1'>
                   <FaStar/>
                   <FaStar/>
                   <FaStar/>
@@ -229,16 +229,16 @@ const ProductDetails = () => {
               </div>
 
               <div className='flex items-center gap-2 text-2xl lg:text-3xl font-medium my-2'>
-                <p className='text-red-600'>{displayNARCurrency(data.sellingPrice)}</p>
+                <p className='text-yellow-600'>{displayNARCurrency(data.sellingPrice)}</p>
                 <p className='text-slate-400 line-through'>{displayNARCurrency(data.price)}</p>
               </div>
 
               <div className='flex items-center my-2 gap-3'>
-                <button className='border-2 text-red-600 font-medium px-3 py-1 min-w-[120px] border-red-600 rounded
-                hover:bg-red-600 hover:text-white '
+                <button className='border-2 text-yellow-600 font-medium px-3 py-1 min-w-[120px] border-yellow-600 
+                hover:bg-yellow-600 hover:text-white '
                onClick={(e)=>handleBuyProduct(e,data?._id)} >Buy</button>
-                <button className='border-2 font-medium text-white bg-red-600 px-3 py-1 min-w-[120px] border-red-600 rounded
-                hover:text-red-600 hover:bg-white'
+                <button className='border-2 font-medium text-white bg-yellow-600 px-3 py-1 min-w-[120px] border-yellow-600 
+                hover:text-yellow-600 hover:bg-white'
                 onClick={(e)=>handleAddToCart(e,data?._id)}>Add To Cart</button>
               </div>
 

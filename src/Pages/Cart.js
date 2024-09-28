@@ -6,11 +6,12 @@ import {MdDelete} from "react-icons/md"
 import {loadStripe} from '@stripe/stripe-js';
 
 
+
 const Cart = () => {
 
     const [data,setData] = useState([])
     const [loading,setLoading] = useState(false)
-    const context = useContext(Context)
+    const context = useContext(Context) //data of cart is coming from here
     const loadingCart = new Array(context.cartProductCount).fill(null)
   
 
@@ -125,12 +126,10 @@ const Cart = () => {
         (preve,curr)=>preve + (curr.quantity * 
             curr?.productId?.sellingPrice) , 0)
 
-            const handlePayment = async ()=>{
+            const handlePayment = async()=>{
 
-                
-               
-        const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
+                const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
                 const response = await fetch(SummaryApi.payment.url,{
                     method : SummaryApi.payment.method,
                     credentials : 'include',
@@ -138,20 +137,21 @@ const Cart = () => {
                         'content-type' : 'application/json'
                     },
                     body : JSON.stringify({
-                        cartItems : data
+                     cartItems :  data 
                     })
                 })
+
                 const responseData = await response.json()
 
                 if(responseData?.id){
-                    stripePromise.redirectToCheckout({ sessionId : responseData.id})
+                    stripePromise.redirectToCheckout({sessionId : responseData.id})
                 }
-                
 
+                console.log("payment response", responseData)
             }
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto mt-14 lg:mt-0'>
        <div className='text-center text-lg my-3'>
        {
              data.length === 0 && !loading && (
@@ -189,8 +189,8 @@ const Cart = () => {
                     </div>
                     <div className='px-4 py-2 relative'>
                   {/**delete product */}
-                        <div className='absolute right-0 text-red-600 rounded-full
-                        p-2 hover:bg-red-600 hover:text-white cursor-pointer'
+                        <div className='absolute right-0 text-yellow-600 rounded-full
+                        p-2 hover:bg-yellow-600 hover:text-white cursor-pointer'
                         onClick={()=>deleteCartProduct(product?._id)}>
                         <MdDelete/>
                         </div>
@@ -198,21 +198,21 @@ const Cart = () => {
                        line-clamp-1 '>{product?.productId?.productName}</h2>
                        <p className='capitalize text-slate-500'>{product?.productId?.category}</p>
               <div className='flex items-center justify-between'>
-              <p className='text-red-600 font-medium text-lg'>
+              <p className='text-black font-medium text-lg'>
               {displayNARCurrency(product?.productId?.sellingPrice)}</p>
               <p className='text-slate-600 font-semibold text-lg'>
               {displayNARCurrency(product?.productId?.sellingPrice * product?.quantity)}</p>
               </div>
                     <div className='flex items-center gap-3 mt-1'>
-                        <button className='flex rounded hover:bg-red-600
+                        <button className='flex rounded hover:bg-yellow-600
                          hover:text-white justify-center items-center 
-                         border w-6 h-6 border-red-600 text-red-600'
+                         border w-6 h-6 border-yellow-600 text-yellow-600'
                          onClick={()=>decreaseQty(product?._id, product?.quantity)}
                          >-</button>
                         <span>{product?.quantity}</span>
-                        <button className='flex rounded hover:bg-red-600
+                        <button className='flex rounded hover:bg-yellow-600
                          hover:text-white justify-center items-center 
-                         border w-6 h-6 border-red-600 text-red-600
+                         border w-6 h-6 border-yellow-600 text-yellow-600
                          '
                          onClick={() => increaseQty(product?._id, product?.quantity)}
 
@@ -239,8 +239,8 @@ const Cart = () => {
                                            
                                        </div>
                            ) : (
-                   <div className='h-36 bg-white'>
-                   <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
+                   <div className='h-36 bg-yellow-100'>
+                   <h2 className='text-black px-4 py-1'>Summary</h2>
                    <div className='flex items-center justify-between 
                    px-4 font-medium text-lg text-slate-600  gap-2'>
                        <p>Quantity</p>
@@ -252,7 +252,7 @@ const Cart = () => {
                            <p>Total Price</p>
                            <p>{displayNARCurrency(totalPrice)}</p>
                        </div>
-                       <button className='bg-blue-600 p-2 text-white
+                       <button className='bg-yellow-600 p-2 text-white
                        w-full'
                        onClick={handlePayment}>Payment</button>
                    </div>

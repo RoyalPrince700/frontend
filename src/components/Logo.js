@@ -1,5 +1,7 @@
 import React from 'react';
 import lifcart from '../assest/lifcartnew.png'; // Navigates from components to assets
+import fetchfind from '../assest/fetchfind.png'; // Navigates from components to assets
+
 
 
 

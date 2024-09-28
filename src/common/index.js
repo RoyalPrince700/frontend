@@ -80,6 +80,22 @@ const SummaryApi = {
     payment : {
         url : `${backendDomain}/api/checkout`,
         method : 'post'
+    },
+    order : {
+        url : `${backendDomain}/api/order-list`,
+        method : 'get'
+    },
+    likedProduct : {
+        url : `${backendDomain}/api/liked-product`,
+        method : 'post'
+    },
+    likedProductCount : {
+        url : `${backendDomain}/api/countLikedProduct`,
+        method : 'get'
+    },
+    viewLikedProduct : {
+        url : `${backendDomain}/api/viewLikedProduct`,
+        method : 'get'
     }
 }
  

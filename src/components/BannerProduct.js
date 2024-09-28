@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
-import image1 from '../assest/banner/img1.webp'
-import image2 from '../assest/banner/img2.webp'
-import image3 from '../assest/banner/img3.jpg'
+import image1 from '../assest/banner/tecpc1.jpg'
+import image2 from '../assest/banner/tecpc2.jpg'
+import image3 from '../assest/banner/tecpc1.jpg'
 import image4 from '../assest/banner/img4.jpg'
 import image5 from '../assest/banner/img5.webp'
+import image6 from '../assest/banner/techno one.jpg'
+import image7 from '../assest/banner/technew.jpg'
+import image8 from '../assest/banner/tech second.jpg'
+
+
+
 
 
 import image1Mobile from '../assest/banner/img1_mobile.jpg'
@@ -19,19 +25,15 @@ const BannerProduct = () => {
 const [currrentImage, setCurrentImage] = useState(0)
 
     const desktopImages = [
-        image1,
-        image2,
-        image3,
-        image4,
-        image5
+      image1,
+      image2,
+      image3
     ]
 
     const mobileImages = [
-        image1Mobile,
-        image2Mobile,
-        image3Mobile,
-        image4Mobile,
-        image5Mobile
+        image6,
+        image7,
+        image8
     ]
 
         const nextImage = () =>{

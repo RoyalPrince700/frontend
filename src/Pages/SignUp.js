@@ -67,7 +67,7 @@ const SignUp = () => {
 
   return (
     <section id='signup'>
-      <div className='mx-auto container p-4'>
+      <div className='mx-auto container p-4 mt-16 lg:mt-0'>
         <div className='bg-white mx-auto p-4 w-full max-w-md py-5'>
           <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
             <div>
@@ -193,14 +193,14 @@ const SignUp = () => {
             </div>
 
             <button
-              className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>
+              className='bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>
               Sign Up
             </button>
           </form>
 
           <p className='my-5'>
             Already have an account?{' '}
-            <Link to={'/login'} className='text-red-600 hover:underline hover:text-red-700'>
+            <Link to={'/login'} className='text-yellow-600 hover:underline hover:text-yellow-700'>
               Login
             </Link>
           </p>
