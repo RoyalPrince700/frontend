@@ -96,6 +96,10 @@ const SummaryApi = {
     viewLikedProduct : {
         url : `${backendDomain}/api/viewLikedProduct`,
         method : 'get'
+    },
+    allOrder : {
+        url : `${backendDomain}/api/all-order`,
+        method : 'get'
     }
 }
  

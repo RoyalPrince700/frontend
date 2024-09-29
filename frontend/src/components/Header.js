@@ -308,7 +308,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to={"/login"}
-                    className='px-4 py-1 text-white hover:bg-yellow-700 bg-yellow-600 p-3'
+                    className='px-4 py-1 text-white rounded-full hover:bg-yellow-700 bg-yellow-600 p-3'
                   >
                     Login
                   </Link>
@@ -322,7 +322,7 @@ const Header = () => {
               <div className='flex lg:hidden items-center w-full justify-between max-w-full pl-2 border rounded-full focus-within:shadow-md'>
                 <input
                   type='text'
-                  placeholder='Search products, brands and categories here...'
+                  placeholder='Search products here...'
                   className='w-full outline-none'
                   onChange={handleSearch}
                   value={search}
