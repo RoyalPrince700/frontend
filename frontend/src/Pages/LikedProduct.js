@@ -56,12 +56,14 @@ const LikedProducts = () => {
   };
 
   return (
-    <div className="container mx-auto mt-14 lg:mt-0">
+    <div className="container mx-auto mt-12 lg:mt-0">
+      <h1 className="text-3xl font-bold text-center">Your Liked Product</h1>
+        
       <div className="text-center text-lg my-3">
-        {data.length === 0 && !loading && <p className="bg-white py-5">No liked products</p>}
+        {data.length === 0 && !loading && <p className="bg-white py-3">No liked products</p>}
       </div>
 
-      <div className="flex flex-col p-4 lg:flex-row gap-10 lg:justify-between">
+      <div className="flex flex-col p-4 lg:flex-row gap-3 lg:justify-between">
         {/* View Liked Products */}
         <div className="w-full max-w-3xl">
           {loading ? (
@@ -107,19 +109,25 @@ const LikedProducts = () => {
 
         {/* Summary */}
         {data[0] && (
-          <div className="mt-4 lg:mt-0 w-full max-w-sm">
-            {loading ? (
-              <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
-            ) : (
-              <div className="h-36 bg-yellow-100">
-                <h2 className="text-white bg-yellow-600 px-4 py-1">Summary</h2>
-                <div className="flex items-center justify-between px-4 font-medium text-lg text-slate-600 gap-2">
-                  <p>Total Products Liked</p>
-                  <p>{data.length}</p>
-                </div>
-              </div>
-            )}
-          </div>
+       <div className="mt-4 lg:mt-0 w-full max-w-sm">
+       {loading ? (
+         <div className="h-36 bg-slate-200 border border-slate-300 rounded-lg animate-pulse"></div>
+       ) : (
+         <div className="bg-white rounded-lg shadow-lg">
+           <h2 className="text-lg font-semibold text-gray-800 px-6 py-4 bg-yellow-500 rounded-t-lg">
+             Liked Products Summary
+           </h2>
+           <div className="px-6 py-4">
+             <div className="flex items-center justify-between text-gray-600 mb-3">
+               <p className="text-sm">Total Products Liked</p>
+               <p className="text-sm font-medium">{data.length}</p>
+             </div>
+           </div>
+         </div>
+       )}
+     </div>
+     
+       
         )}
       </div>
     </div>

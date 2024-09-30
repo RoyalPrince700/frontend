@@ -58,7 +58,7 @@ const HorizontalCardProduct = ({category, heading}) => {
 
                 <h2 className='text-2xl font-semibold py-4'>{heading}</h2>
 
-        <div className='flex items-center gap-4 md:gap-3 
+        <div className='flex items-center gap-2 md:gap-3 
         overflow-scroll scrollbar-none transition-all' ref={scrollElement}>
              <button 
              className='bg-white shadow-md rounded-full p-1 absolute
@@ -72,38 +72,47 @@ const HorizontalCardProduct = ({category, heading}) => {
         {   loading ? (
              loadingList.map((product, index)=>{
                 return (  
-            <div className='w-full min-w-[380px] md:min-w-[320px] h-full
-            max-w-[400px] md:max-w-[520px] px-7 gap-3
-                bg-slate-300 rounded-sm shadow flex'>
-                
-                <div className='bg-slate-200 h-full p-4 min-w-[120px] 
-                md:min-w-[145px] animate-pulse rounded-full'>
-                   
-                </div>
-                <div className='p-4 grid w-full gap-2'>
-                    <h2 className='font-medium text-base md:text-lg
-                    text-ellipsis line-clamp-1 text-black bg-slate-200
-                    animate-pulse p-1'></h2>
-                    <p className='capitalize animate-pulse rounded-full
-                     text-slate-500  bg-slate-200'>
-                        </p>
-                    <div className='flex gap-3 w-full'>
-                        <p className=' animate-pulse rounded-full text-red-600 font-medium w-full bg-slate-200 p-1'>
-                            </p>
-                        <p className=' animate-pulse rounded-full text-slate-500 line-through w-full bg-slate-200 p-1'>
-                            </p>
+          <div to={"product/"+product?._id} className='w-full min-w-[300px] md:min-w-[400px] h-44
+                    max-w-[400px] md:max-w-[420px] 
+                         rounded-sm shadow flex'>
+                        
+                        <div className='bg-slate-50 h-full p-4 min-w-[120px] 
+                        md:min-w-[145px] max-w-[200px] animate-pulse'>
+                          
+                        </div>
+        
+                   <div className='p-4 grid w-[300px] bg-white'>
+                    <div className=''>
+                      <h2 className='font-medium text-base md:text-lg text-ellipsis h-4 line-clamp-1 text-black p-1 py-1
+                                  animate-pulse rounded-full bg-slate-100'></h2>
+                        <p className='capitalize text-slate-500 p-1 h-4  animate-pulse rounded-full mt-2 bg-slate-100'> </p>
                     </div>
-                    <button className='animate-pulse rounded-full text-sm  bg-slate-200 text-white
-                     p-2 py-0.5 px-3 
-                   w-full '></button>
-                    </div>
-                </div>
+                        
+                       <div className='flex gap-1 flex-col animate-pulse'>
+                                <p className='text-red-600 w-full h-5  font-medium p-1  animate-pulse rounded-full bg-slate-100'> </p>
+                                <p className='text-slate-500  w-full h-5 line-through p-1 animate-pulse rounded-full bg-slate-100'> </p>
+                         </div>
+        
+                            
+                            <div className='flex items-center justify-between rounded-full animate-pulse bg-slate-100'>
+                                    <button className=' text-sm text-yellow-600 
+                                    hover:bg-yellow-700 hover:shadow-sm hover:text-white transition-all p-2 py-0.5  rounded-full
+                                    'onClick={(e)=>handleAddToCart(e,product?._id)}></button>
+                                        
+                                        <button className=' text-sm text-yellow-600 
+                                    hover:bg-yellow-700 hover:shadow-sm hover:text-white transition-all p-2 py-0.5  rounded-full
+                                    '></button>
+                                
+                            </div>
+                     </div>
+             </div>
+           
                 )
             })
         ) : (
             data.map((product, index)=>{
                 return (  
-            <Link to={"product/"+product?._id} className='w-full min-w-[400px] md:min-w-[400px] h-44
+            <Link to={"product/"+product?._id} className='w-full min-w-[300px] md:min-w-[400px] h-44
             max-w-[400px] md:max-w-[420px] 
                  rounded-sm shadow flex'>
                 
@@ -135,7 +144,7 @@ const HorizontalCardProduct = ({category, heading}) => {
                         
                         <button className=' text-sm text-yellow-600 
                     hover:bg-yellow-700 hover:shadow-sm hover:text-white transition-all p-2 py-0.5  rounded-full
-                    'onClick={(e)=>handleLikedProduct(e,product?._id)}><AiOutlineLike className='text-3xl'/></button>
+                    'onClick={(e)=>handleLikedProduct(e,product?._id)}><AiOutlineLike className='text-xl'/></button>
                         
                     </div>
                     </div>

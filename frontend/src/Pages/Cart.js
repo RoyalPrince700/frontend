@@ -151,7 +151,8 @@ const Cart = () => {
             }
 
   return (
-    <div className='container mx-auto mt-14 lg:mt-0'>
+    <div className='container mx-auto mt-10 lg:mt-0'>
+        
        <div className='text-center text-lg my-3'>
        {
              data.length === 0 && !loading && (
@@ -179,10 +180,12 @@ const Cart = () => {
                 ) : (
                  data.map((product, index) =>{
                    return (
+                    
+
                     <div key={product?._id+"Add To Cart Loading"}
-                    className='w-full bg-white h-32 border
+                    className='w-full bg-white h-40 border
                    border-slate-300 my-2 rounded grid grid-cols-[128px,1fr]'>
-                    <div className='w-32 h-32 bg bg-slate-200'>
+                    <div className='w-32 h-40 bg bg-slate-200'>
                         <img src={product?.productId?.productImage[0]} 
                         className='w-full h-full object-scale-down
                         mix-blend-multiply'/> 
@@ -197,12 +200,10 @@ const Cart = () => {
                         <h2 className='text-lg lg:text-xl text-ellipsis
                        line-clamp-1 '>{product?.productId?.productName}</h2>
                        <p className='capitalize text-slate-500'>{product?.productId?.category}</p>
-              <div className='flex items-center justify-between'>
-              <p className='text-black font-medium text-lg'>
-              {displayNARCurrency(product?.productId?.sellingPrice)}</p>
-              <p className='text-slate-600 font-semibold text-lg'>
-              {displayNARCurrency(product?.productId?.sellingPrice * product?.quantity)}</p>
-              </div>
+                     <div className='flex flex-col md:flex-row justify-between'>
+                            <p className='text-black font-medium text-lg'> {displayNARCurrency(product?.productId?.sellingPrice)}</p>
+                            <p className='text-slate-600 font-semibold text-lg'> {displayNARCurrency(product?.productId?.sellingPrice * product?.quantity)}</p>
+                   </div>
                     <div className='flex items-center gap-3 mt-1'>
                         <button className='flex rounded hover:bg-yellow-600
                          hover:text-white justify-center items-center 
@@ -239,23 +240,29 @@ const Cart = () => {
                                            
                                        </div>
                            ) : (
-                   <div className='h-36 bg-yellow-100'>
-                   <h2 className='text-black px-4 py-1'>Summary</h2>
-                   <div className='flex items-center justify-between 
-                   px-4 font-medium text-lg text-slate-600  gap-2'>
-                       <p>Quantity</p>
-                       <p>{totalQty}</p> 
-                       </div>
-           
-                       <div className='flex 
-                       font-medium text-lg text-slate-600 items-center justify-between px-4  gap-2'>
-                           <p>Total Price</p>
-                           <p>{displayNARCurrency(totalPrice)}</p>
-                       </div>
-                       <button className='bg-yellow-600 p-2 text-white
-                       w-full'
-                       onClick={handlePayment}>Payment</button>
-                   </div>
+
+                 <div className='h-auto bg-white rounded-lg shadow-lg'>
+                        <h2 className='text-lg font-semibold text-gray-800 px-6 py-4 border-b border-gray-200'>Summary</h2>
+                        
+                        <div className='px-6 py-4'>
+                            <div className='flex items-center justify-between text-gray-600 mb-3'>
+                                <p className='text-sm'>Quantity</p>
+                                <p className='text-sm'>{totalQty}</p> 
+                            </div>
+
+                            <div className='flex items-center justify-between text-gray-600 mb-3'>
+                                <p className='text-sm'>Total Price</p>
+                                <p className='text-sm'>{displayNARCurrency(totalPrice)}</p>
+                            </div>
+                        </div>
+
+                        <button 
+                            className='bg-yellow-600 hover:bg-yellow-700 transition-colors duration-200 text-white py-3 px-6 rounded-b-lg w-full font-semibold'
+                            onClick={handlePayment}>
+                            Make Payment
+                        </button>
+                    </div>
+
                )
            }
                     </div>

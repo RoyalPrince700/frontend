@@ -14,9 +14,9 @@ import image8 from '../assest/banner/tech second.jpg'
 
 
 
-import image1Mobile from '../assest/banner/img1_mobile.jpg'
-import image2Mobile from '../assest/banner/img2_mobile.webp'
-import image3Mobile from '../assest/banner/img3_mobile.jpg'
+import image1Mobile from '../assest/banner/tmo.jpg'
+import image2Mobile from '../assest/banner/tms.jpg'
+import image3Mobile from '../assest/banner/tmt.jpg'
 import image4Mobile from '../assest/banner/img4_mobile.jpg'
 import image5Mobile from '../assest/banner/img5_mobile.png'
 
@@ -31,9 +31,9 @@ const [currrentImage, setCurrentImage] = useState(0)
     ]
 
     const mobileImages = [
-        image6,
-        image7,
-        image8
+      image1Mobile,
+      image2Mobile,
+      image3Mobile
     ]
 
         const nextImage = () =>{
@@ -64,8 +64,8 @@ const [currrentImage, setCurrentImage] = useState(0)
 
 
   return (
-    <div className='container mx-auto px-4 rounded '>
-        <div className='h-56 md:h-72 w-full bg-slate-200 relative'>
+    <div className='container mx-auto rounded '>
+        <div className='h-40 md:h-52 w-full bg-slate-50 relative'>
         <div className='absolute z-10 w-full h-full md:flex items-center hidden'>
            <div className=' flex justify-between w-full text-2xl'>
                 <button onClick={previousImage} className='bg-white shadow-md rounded-full'><FaAngleLeft/></button>

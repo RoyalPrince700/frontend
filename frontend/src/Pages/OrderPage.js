@@ -22,7 +22,7 @@ const OrderPage = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mt-10 lg:mt-0 mx-auto p-6">
       <h1 className="text-3xl font-bold text-center mb-8">Your Orders</h1>
       {!data[0] && (
         <div className="text-center text-gray-600 text-lg">
@@ -41,7 +41,7 @@ const OrderPage = () => {
                 {item?.productDetails.map((product, index) => (
                   <div
                     key={product.productId + index}
-                    className="flex items-center gap-4 bg-gray-50 rounded-lg p-4"
+                    className="flex items-center gap-4 bg-gray-50  rounded-lg p-4"
                   >
                     <img
                       src={product.image[0]}
@@ -49,11 +49,11 @@ const OrderPage = () => {
                       alt={product.name}
                     />
                     <div className='flex flex-col'>
-                      <p className="font-medium text-lg w-64  text-gray-700 truncate text-ellipsis
+                      <p className="font-medium text-lg w-36 text-gray-700 truncate text-ellipsis
                        max-w-xs">
                         {product.name}
                       </p>
-                      <div className="flex items-center gap-6 mt-2">
+                      <div className="flex flex-col gap-1 mt-2">
                         <p className="text-xl font-semibold text-yellow-600">
                           {displayNARCurrency(product.price)}
                         </p>

@@ -27,7 +27,7 @@ const Header = () => {
   const location = useLocation();
 
   // Hide search bar on login/signup pages
-  const hideSearchBar = location.pathname === '/login' || location.pathname === '/signup';
+  const hideSearchBar = location.pathname === '/login' || location.pathname === '/sign-up';
 
   // Handle logout functionality
   const handleLogout = async () => {
@@ -260,21 +260,21 @@ const Header = () => {
       </div>
 
        {/* mobile */}
-       <div className='bg-white flex md:hidden mx-auto px-10  items-center py-4 justify-between w-full'>
+       <div className='bg-white flex md:hidden mx-auto px-2 items-center pt-4 pb-2 justify-between w-full'>
        
-        <div className='flex flex-col w-full h-full gap-6'>
+        <div className='flex flex-col w-full h-full gap-4'>
           <div className='cursor-pointer flex items-center justify-between gap-4'>
-            <div className='flex items-center gap-4'>
-              <RxHamburgerMenu className='text-2xl'/>
+            <div className='flex items-center gap-3'>
+              <RxHamburgerMenu className='text-xl'/>
               <Link to={"/"}>
-                <Logo w="100px" h="25px" />
+                <Logo w="70px" h="20px" />
               </Link>
             </div>
 
             {/* like and Cart section */}
             <div className='flex items-center gap-5'>
               {user?._id && (
-                <Link to={"/likedpage"} className='text-2xl flex relative'>
+                <Link to={"/likedpage"} className='text-xl flex relative'>
                   <span>
                     <AiOutlineLike />
                   </span>
@@ -286,7 +286,7 @@ const Header = () => {
 
               {/* Shopping Cart */}
               {user?._id && (
-                <Link to={"/cart"} className='text-2xl flex relative'>
+                <Link to={"/cart"} className='text-xl flex relative'>
                   <span>
                     <BsCart2 />
                   </span>
@@ -301,14 +301,14 @@ const Header = () => {
                 {user?._id ? (
                   <button
                     onClick={handleLogout}
-                    className='px-2 py-1 text-white rounded-full hover:bg-yellow-700 bg-yellow-600 p-3'
+                    className='px-2 py-1 text-white text-sm rounded-full hover:bg-yellow-700 bg-yellow-600'
                   >
                     Logout
                   </button>
                 ) : (
                   <Link
                     to={"/login"}
-                    className='px-4 py-1 text-white rounded-full hover:bg-yellow-700 bg-yellow-600 p-3'
+                    className='px-2 py-1 text-white text-sm rounded-full hover:bg-yellow-700 bg-yellow-600'
                   >
                     Login
                   </Link>
@@ -319,7 +319,7 @@ const Header = () => {
 
           {!hideSearchBar && (
             <div className='flex w-full'>
-              <div className='flex lg:hidden items-center w-full justify-between max-w-full pl-2 border rounded-full focus-within:shadow-md'>
+              <div className='flex lg:hidden items-center w-full justify-between max-w-full pl-2 border focus-within:shadow-md'>
                 <input
                   type='text'
                   placeholder='Search products here...'
@@ -327,8 +327,8 @@ const Header = () => {
                   onChange={handleSearch}
                   value={search}
                 />
-                <div className='text-lg min-w-[40px] flex items-center h-8 bg-yellow-600 justify-center rounded-r-full text-white'>
-                  <GrSearch />
+                <div className='text-lg min-w-[50px] flex items-center h-8 justify-center rounded-r-full text-slate-600'>
+                  <GrSearch className=''/>
                 </div>
               </div>
             </div>

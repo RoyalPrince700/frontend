@@ -7,7 +7,7 @@ import SubHeader from '../components/SubHeader'
 
 function Home() {
   return (
-    <div className='mt-16 lg:mt-0'>
+    <div className='mt-12 lg:mt-0'>
       {/* <CategoryList/> */}
       <SubHeader/>
     

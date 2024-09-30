@@ -74,14 +74,13 @@ const VerticalCard = ({loading,data = []}) => {
         data.map((product, index)=>{
             return (  
                 
-                <Link to={"product/"+product?._id} className='w-full  min-w-[200px] md:min-w-[220px] 
+                <Link to={"product/"+product?._id} className='w-full  min-w-[100px] md:min-w-[220px] 
                 max-w-[280px] md:max-w-[280px]
                     bg-white rounded-sm shadow '>
                     
-                    <div className='bg-slate-100 h-48 p-4 min-w-[200px] 
+                    <div className='bg-slate-100 h-48 p-4 min-w-[100px] w-full
                 md:min-w-[145px] flex justify-center items-center'>
-                       <img src={product?.productImage[0]}
-                       className='object-scale-down h-full
+                       <img src={product?.productImage[0]} className='object-scale-down h-full
                        hover:scale-110 transition-all mix-blend-multiply'
                        />
             </div>
@@ -102,7 +101,7 @@ const VerticalCard = ({loading,data = []}) => {
                         
                         <button className=' text-sm text-yellow-600 
                     hover:bg-yellow-700 hover:shadow-sm hover:text-white transition-all p-2 py-0.5  rounded-full
-                    'onClick={(e)=>handleLikedProduct(e,product?._id)}><AiOutlineLike className='text-3xl'/></button>
+                    'onClick={(e)=>handleLikedProduct(e,product?._id)}><AiOutlineLike className='text-xl'/></button>
                         
                     </div>
 

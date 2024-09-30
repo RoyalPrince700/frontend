@@ -74,7 +74,7 @@ const VerticalCardProduct = ({category, heading}) => {
         loading ? (
             loadingList.map((product, index)=>{
                 return (  
-            <div className='w-full  min-w-[260px] md:min-w-[280px] 
+            <div className='w-full  min-w-[200px] md:min-w-[280px] 
             max-w-[280px] md:max-w-[320px]
                 bg-white rounded-sm shadow '>
                 
@@ -139,7 +139,7 @@ const VerticalCardProduct = ({category, heading}) => {
                         
                         <button className=' text-sm text-yellow-600 
                     hover:bg-yellow-700 hover:shadow-sm hover:text-white transition-all p-2 py-0.5  rounded-full
-                    'onClick={(e)=>handleLikedProduct(e,product?._id)}><AiOutlineLike className='text-3xl'/></button>
+                    'onClick={(e)=>handleLikedProduct(e,product?._id)}><AiOutlineLike className='text-xl'/></button>
                         
                     </div>
                    

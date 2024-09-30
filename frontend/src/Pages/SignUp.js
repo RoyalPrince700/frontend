@@ -6,6 +6,8 @@ import imageTobase64 from '../routes/imageTobase64';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 import { locations } from '../components/Location.js';
+import Logo from '../components/Logo.js';
+import { CgProfile } from "react-icons/cg";
 
 
 const SignUp = () => {
@@ -67,20 +69,14 @@ const SignUp = () => {
 
   return (
     <section id='signup'>
-      <div className='mx-auto container p-4 mt-16 lg:mt-0'>
-        <div className='bg-white mx-auto p-4 w-full max-w-md py-5'>
-          <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
-            <div>
-              <img src={data.profilePic || loginIcons} alt='login icon' />
-            </div>
-            <form>
-              <label>
-                <div className='text-xs absolute bg-opacity-80 bottom-0 w-full bg-slate-200 pb-2 pt-2 cursor-pointer text-center'>
-                  Upload Photo
-                </div>
-                <input type='file' className='hidden' onChange={handleUploadPic} />
-              </label>
-            </form>
+      <div className='mx-auto container p-4 mt-2 lg:mt-0 flex flex-col items-center gap-3'>
+      <div className='flex items-center'>
+          <Link to={"/"}>
+                <Logo w="100px" h="25px" />
+              </Link>
+          </div>
+        <div className='bg-white mx-auto p-4 w-full max-w-md py-3'>
+          <div className='w-20 h-full mx-auto relative overflow-hidden rounded-full'>
           </div>
 
           <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
